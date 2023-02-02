@@ -30,6 +30,7 @@
       padding:8vh;
       height:8vh;
       text-align: center;
+      margin-top:7px;
     }
     #under-ui{
       display: grid;
@@ -94,6 +95,12 @@
     .offcanvas-title:hover{
     color:rgb(0, 191, 255);
     }
+    .center-con {
+        display:flex; 
+        justify-content: center; 
+        align-item:center;
+        margin-top:7px;
+      }
 </style>
   <body style="background-color:rgb(240,248,255);">  
    
@@ -112,7 +119,7 @@
               <a href="/" class="bar-item">HOME</a>
               <a href="#" class="bar-item">DASHBOARD</a>
               <a href="#" class="bar-item">LOGIN</a>
-              <p style="padding:10px;">Please Login or Register to access the website.</p>
+              <p style="padding:10px;">Try scrolling the rest of the page to see this option in action.</p>
             </div>
               
             </div>
@@ -126,37 +133,49 @@
             </div>
         </div>
       </header>
-      <a>
-        <h1 id="grad1" >
-          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 20" style="margin:2vw; ">
-            <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>
-            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
-            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
-          </svg>
-          FOLIOS
-        </h1>
-      </a>
-      <div class="container" style="padding-top: 5% ;padding-bottom: 5% ;text-align: center;color: white;" >
-        <h2>
-          Welocome To FOLIOS, Please 
-        </h2>
-        <div class='button-gap'>
-          <a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url_for('accounts.login') }}" style="position:relative; width: 20vw;">
-            <i class="fa-solid fa-right-to-bracket"></i>
-          Login
-          </a>
+        <a>
+            <h1 id="grad1" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 20" style="margin:2vw; ">
+                <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>
+                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+            </svg>
+            FOLIOS
+            </h1>
+        </a>
+        <div style="padding-top: 1% ;padding-bottom: 5% ;text-align: center;color: white;" >
+            <form action="{{ url_for('accounts.do_login') }}" method="POST">
+                <h2 class="center-con">
+                REGISTERATION FORM
+                </h2>
+            
+                <div class= "center-con">  
+                    <div class="form-floating"  style="width:30vw;">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" style="border-radius:0.5rem;">
+                        <label for="floatingInput" style="color:rgb(105, 105, 105);"><i class="fa-solid fa-user" style="margin-right:1vw; "></i>Email address</label>
+                    </div>
+                </div>
+                    <div class= "center-con">  
+                    <div class="form-floating"  style="width:30vw;">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" style="border-radius:0.5rem;">
+                        <label for="floatingInput" style="color:rgb(105, 105, 105);"><i class="fa-solid fa-user" style="margin-right:1vw; "></i>Email address</label>
+                    </div>
+                </div>
+                <div class= "center-con">  
+                    <div class="form-floating"  style="width:30vw;">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" style="border-radius:0.5rem;">
+                        <label for="floatingInput" style="color:rgb(105, 105, 105);"><i class="fa-solid fa-user" style="margin-right:1vw; "></i>Email address</label>
+                    </div>
+                </div>
+            
+                <div class='button-gap'>
+                    <button type="summit" class="btn btn-primary btn-lg btn-block" href="{{ url_for('accounts.login') }}" style="position:relative; width: 30vw;">
+                        <i class="fa-solid fa-user-plus"></i>Register    
+                </button>
+                </div>
+            </form>
         </div>
-        <h3>
-          or 
-        </h3>
-        <div class='button-gap'>
-          <a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url_for('accounts.register') }}" style="position:relative; width: 20vw;">
-            <i class="fa-solid fa-user-plus">
-            </i>
-           Register
-          </a>
-        </div>
-      </div>
+    
     </div>
     <div id="under-ui">
       <div>
