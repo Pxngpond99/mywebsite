@@ -49,11 +49,6 @@ def do_login():
 
     return redirect(url_for("accounts.dashboard"))
 
-@bp.route("/open_profile")
-def open_profile():
-    return render_template("/main/profile.html")
-
-
 @bp.route("/register", methods=["GET", "POST"])
 def register():
     form = accounts_form.RegisterForm()
