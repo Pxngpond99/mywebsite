@@ -127,9 +127,9 @@
           </div>
           <div class="offcanvas-body" style="padding: 0;">
             <div class="bar">
-              <a href="/" class="bar-item">HOME</a>
-              <a href="#" class="bar-item">DASHBOARD</a>
-              <a href="{{ url_for('accounts.login') }}" class="bar-item">LOGIN</a>
+              <a href="/" class="bar-item"><i class="fa-solid fa-house" style="margin-right:1vw;"></i>HOME</a>
+              <a href="{{ url_for('accounts.dashboard') }}" class="bar-item"><i class="fa-solid fa-file" style="margin-right:1vw;"></i>DASHBOARD</a>
+              <a href="{{ url_for('accounts.login') }}" class="bar-item"><i class="fa-solid fa-right-to-bracket" style="margin-right:1vw;"></i>LOGIN</a>
               <p style="padding:10px;">Please Login or Register to access the website.</p>
             </div> 
           </div>
@@ -158,6 +158,7 @@
         <div class="text-center" >
           <div class="form-signin w-100 m-auto" >
             <form action="{{ url_for('accounts.do_login') }}" method="POST">
+              {{ form.hidden_tag() }}
               <h3 class="h3 mb-3 fw-normal">Please sign in</h3>
               <div class= "center-con">
                 <div class="form-floating"  style="width:30vw;">

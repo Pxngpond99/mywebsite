@@ -11,3 +11,4 @@ class FolioForm(FlaskForm):
     name = StringField("Name", validators=[validators.DataRequired()])
     biography = StringField("Biography", widget=widgets.TextArea())
     education = StringField("Education", widget=widgets.TextArea())
+    date_of_birth = StringField("Birth Date", validators=[validators.DataRequired()])

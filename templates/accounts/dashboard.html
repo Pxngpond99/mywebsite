@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/eab4031eed.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/eab4031eed.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </head>
+<style>
+  #grad1 {
+    position:relative;
+    background-color:transparent ;
+    color: rgb(0,255,255);
+    text-align: center;
+    width:50%;
+    font-size: 2em;
+    letter-spacing: 2vw;
+    text-shadow: 2px 2px white;
+    font-weight: 900;
+    margin-bottom:0;
+    height:50px;
+    top:-8px;
+    right:10vw;
+  }
+  .head-ui{
+  padding:10px;
+  position:relative;
+  padding-right:7vw;
+  padding-left:7vw;
+  background-color:rgb(78,53,36);  
+  box-shadow: 0 1px 3px 0 black;
+  }
+  .item{
+  padding-top:10px;
+  padding-bottom:10px;
+  padding-right:3vw;
+  padding-left:3vw;
+  position:relative;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  text-decoration-line: none;
+  }
+  a:hover {
+  background-color: rgb(160, 110, 73);
+  }
+  .bar{
+  width:100%; 
+  height:10vh;
+  grid-template-columns: auto;
+  display: grid;
+  gap: 20px;
+  }
+  .bar-item{
+  width:100%;
+  position:relative;
+  text-align: left;
+  float:none;
+  color: white;
+  text-decoration-line: none;
+  padding:20px;
+  }
+  .bar-item:hover{
+  background-color: rgb(0, 191, 255);
+  }
+  .offcanvas-title:hover{
+  color:rgb(0, 191, 255);
+  }
+  .center-con {
+    display:flex; 
+    justify-content: center; 
+    align-item:center;
+    margin-top:7px;
+  }
+</style>
+<body style="background-image: linear-gradient(to bottom right, rgb(0,255,255),rgb(0, 191, 255),rgb(30, 144, 255), rgb(0,0,205));">  
+
+    <header>
+      <div class="head-ui">
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel" 
+          style="background-image: linear-gradient(to right, rgb(0,0,205) , rgb(0,255,255)); color: white;">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="fa-solid fa-bars" style="margin-right:1vw;"></i>MENU
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body" style="padding: 0;">
+            <div class="bar">
+              <a href="/" class="bar-item"><i class="fa-solid fa-house" style="margin-right:1vw;"></i>HOME</a>
+              <a href="{{ url_for('accounts.dashboard') }}" class="bar-item"><i class="fa-solid fa-file" style="margin-right:1vw;"></i>DASHBOARD</a>
+              <a href="{{ url_for('folios.create') }}" class="bar-item"><i class="fa-solid fa-file-circle-plus" style="margin-right:1vw;"></i>CREATE DASHBOARD</a>
+              <a href="{{ url_for('accounts.logout') }}" class="bar-item"><i class="fa-solid fa-right-from-bracket" style="margin-right:1vw;"></i>LOGOUT</a>
+              <p style="padding:10px;">Enjoy your folios.</p>
+            </div> 
+          </div>
+        </div>
+        <a class="item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"> 
+          <i class="fa-solid fa-bars" style="margin-right:1vw;"></i>
+          MENU
+        </a>
+        <div style="float: right; ">
+          <a class="item"  href="{{ url_for('accounts.logout') }}"> <i class="fa-solid fa-right-from-bracket" style="margin-right:1vw;"></i>LOGOUT</a>
+        </div>
+        <h1 id="grad1" style="float: right; " >
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 20" >
+            <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8V1z"/>
+            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+          </svg>
+          FOLIOS
+        </h1>
+        
+      </div>
+
+    </header>
+    
+    <div style=" margin:0 5vw; padding-top:1vw; background-color:rgb(240 248 255 / 0.7); height:93.2vh; padding:1vw 3vw;" >
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-5" style="border-bottom: 1px solid rgb(78,53,36); width:68vw; margin:0 8vw; ">
+        <h1 class="h2" ><i class="fa-solid fa-clipboard-user" style="margin-right:1vw;"></i>Dashboard</h1>
+      </div>
+    <table class="table" >
+      <thead style="margin-right:5vw; border-bottom: 1px solid rgb(78,53,36)">
+        <tr style="margin-right:5vw;">
+          <th scope="col" >#</th>
+          <th scope="col" ><i class="fa-solid fa-user" style="margin-right:2px;"></i>Name</th>
+          <th scope="col" ><i class="fa-solid fa-envelope"style="margin-right:2px;"></i>Email</th>
+          <th scope="col" ><i class="fa-solid fa-address-book"style="margin-right:2px;"></i>Biography</th>
+          <th scope="col" ><i class="fa-solid fa-user-graduate"style="margin-right:2px;"></i>Education</th>
+          <th scope="col" ><i class="fa-solid fa-baby"style="margin-right:2px;"></i>Birth Date</th>
+          <th scope="col" ><i class="fa-solid fa-screwdriver-wrench" style="margin-right:2px;"></i>Action</th>
+        </tr>
+      </thead>
+      <tbody style="margin-right:5vw; border-bottom: 1px solid rgb(78,53,36)">
+        {% for folio in folio_data %}
+        <tr>
+          <th scope="row">{{ folio.id }}</th>
+          <td>{{ folio.name }}</td>
+          <td>{{ folio.email }}</td>
+          <td>{{ folio.biography }}</td>
+          <td>{{ folio.education }}</td>
+          <td>{{ folio.date_of_birth }}</td>
+          <td>
+            <a href="{{ url_for('folios.view', folio_id=folio.id) }}" class="btn btn-primary" style="width:7vw"><i class="fa-solid fa-magnifying-glass" style="margin-right:5px;"></i>View</a>
+            <a href="{{ url_for('folios.update', folio_id=folio.id) }}" class="btn btn-warning" style="width:7vw"><i class="fa-solid fa-pen-to-square" style="margin-right:5px;"></i>Edit</a>
+            <a href="{{ url_for('folios.delete', folio_id=folio.id) }}" class="btn btn-danger" style="width:7vw"><i class="fa-solid fa-trash" style="margin-right:5px;"></i>Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+      
+        
+         
+
+       
+      </tbody>
+    </table>
+    <a href="{{ url_for('folios.create') }}" class="btn btn-primary"><i class="fa-solid fa-file-circle-plus" style="margin-right:1vw;"></i>CREATE DASHBOARD</a>
+  </div>
+  
+</body>
+</html>

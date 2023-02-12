@@ -109,9 +109,9 @@
             </div>
             <div class="offcanvas-body" style="padding: 0;">
               <div class="bar">
-              <a href="/" class="bar-item">HOME</a>
-              <a href="#" class="bar-item">DASHBOARD</a>
-              <a href="{{ url_for('accounts.login') }}" class="bar-item">LOGIN</a>
+              <a href="/" class="bar-item"><i class="fa-solid fa-house" style="margin-right:1vw;"></i>HOME</a>
+              <a href="{{ url_for('accounts.dashboard') }}" class="bar-item"><i class="fa-solid fa-file" style="margin-right:1vw;"></i>DASHBOARD</a>
+              <a href="{{ url_for('accounts.login') }}" class="bar-item"><i class="fa-solid fa-right-to-bracket" style="margin-right:1vw;"></i>LOGIN</a>
               <p style="padding:10px;">Please Login or Register to access the website.</p>
             </div>
               
@@ -136,9 +136,9 @@
           FOLIOS
         </h1>
       </a>
-      <div class="container" style="padding-top: 5% ;padding-bottom: 5% ;text-align: center;color: white;" >
-        <h2>
-          Welocome To FOLIOS, Please 
+      <div class="container" style="padding-top: 2% ;padding-bottom: 5% ;text-align: center;color: white;" >
+        <h2 style="margin-bottom: 5vh">
+          Welcome To FOLIOS, Please 
         </h2>
         <div class='button-gap'>
           <a type="button" class="btn btn-primary btn-lg btn-block" href="{{ url_for('accounts.login') }}" style="position:relative; width: 20vw;">

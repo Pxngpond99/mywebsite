@@ -1,34 +1,53 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from flask_login import login_required, login_user, logout_user
-from forms import accounts as accounts_form
-import models
-from models import users, folios
 
 from werkzeug.security import generate_password_hash, check_password_hash
+
+import models
+from models import users, folios
+from forms import accounts as accounts_form
+
 
 bp = Blueprint("accounts", __name__, url_prefix="/accounts")
 
 
 @bp.route("/login")
 def login():
-    return render_template("/accounts/login.html")
+    form = accounts_form.LoginForm()
+    return render_template("/accounts/login.html",form=form)
 
-# @bp.route("/test")
-# def test():
-#     return render_template("/accounts/test.html")
+@bp.route("/logout")
+def logout():
+    logout_user()
+    return redirect("/")
+
+
 
 @bp.route("/do-login", methods=["POST"])
 def do_login():
-    email = request.form.get("email")
-    password = request.form.get("password")
 
-    print("-->", email, password)
-    print(request.form)
+    form = accounts_form.LoginForm()
 
-    if not (email == "admin@local" and password == "password"):
-        return redirect(url_for("accounts.login", message="Invalid Login"))
+    if not form.validate_on_submit():
+        return redirect(url_for("accounts.login", **form.errors))
 
-    return render_template("/accounts/login-success.html")
+    user = (
+        models.db.session.query(users.User)
+        .filter_by(
+            email=form.email.data,
+        )
+        .first()
+    )
+
+    if not user:
+        return redirect(url_for("accounts.login", message="invalid login"))
+
+    if not check_password_hash(user.password, form.password.data):
+        return redirect(url_for("accounts.login", message="invalid password"))
+
+    login_user(user)
+
+    return redirect(url_for("accounts.dashboard"))
 
 @bp.route("/open_profile")
 def open_profile():
@@ -52,3 +71,10 @@ def register():
     models.db.session.commit()
 
     return redirect(url_for("accounts.login"))
+
+@bp.route("/dashboard")
+@login_required
+def dashboard():
+    folio_data = models.db.session.query(folios.Folio).all()
+    return render_template("/accounts/dashboard.html", folio_data=folio_data)
+

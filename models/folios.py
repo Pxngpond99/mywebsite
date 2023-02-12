@@ -14,3 +14,4 @@ class Folio(db.Model):
 
     biography = db.Column(db.String)
     education = db.Column(db.String)
+    date_of_birth = db.Column(db.String)
